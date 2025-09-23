@@ -14,13 +14,10 @@ services:
       - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
-      
 
   # Spring Boot Backend Service
   backend:
-    build:
-      context: ./localsplit # Path to your backend directory
-      dockerfile: Dockerfile
+    image: 2300031620/localsplit-backend:latest   # use prebuilt image
     container_name: local_split_backend
     ports:
       - "8081:8081"
@@ -33,9 +30,7 @@ services:
 
   # React Frontend Service
   frontend:
-    build:
-      context: ./local-split-frontend # Path to your frontend directory
-      dockerfile: Dockerfile
+    image: 2300031620/local-split-frontend:latest # use prebuilt image
     container_name: local_split_frontend
     ports:
       - "3000:80"
